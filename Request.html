@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-teal-50 to-blue-50 min-h-screen">
+    
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3"    >
+                    <a href="./index.html">
+                    <div class="w-12 h-12 bg-teal-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl">
+                        H
+                    </div>
+                    <span class="text-xl font-semibold text-gray-800">HelpHub AI</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-8">
+                    <a href="./Dashboard.html" class="text-gray-600 hover:text-gray-900 font-medium">Dashboard</a>
+                    <a href="./Explore.html" class="text-gray-600 hover:text-gray-900 font-medium">Explore</a>
+                    <a href="./Message.html" class="text-gray-600 hover:text-gray-900 font-medium">Messages</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        
+        <!-- Hero Section - Request Detail -->
+        <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-10 mb-6 shadow-xl">
+            <div class="mb-4">
+                <span class="text-teal-400 text-sm font-semibold uppercase tracking-wide">Request Detail</span>
+            </div>
+            <div class="flex items-center gap-4 mb-6">
+                <span class="text-teal-400 text-sm font-medium">Web Development</span>
+                <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">High</span>
+                <span class="text-green-400 text-sm font-medium">Open</span>
+            </div>
+            <h1 class="text-5xl font-bold text-white mb-4 leading-tight">
+                Need help making my portfolio<br>responsive before demo day
+            </h1>
+            <p class="text-gray-300 text-lg">
+                My HTML/CSS portfolio breaks on tablets and I need layout guidance before tomorrow evening.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- AI Summary -->
+                <div class="bg-white rounded-3xl p-8 shadow-md">
+                    <div class="mb-4">
+                        <span class="text-teal-600 text-xs font-bold uppercase tracking-wide">AI Summary</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">What this request needs</h2>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6">
+                        Responsive layout issue with a short deadline. Best helpers are frontend mentors comfortable with CSS grids and media queries.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">HTML/CSS</span>
+                        <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">Responsive</span>
+                        <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">Portfolio</span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="bg-white rounded-3xl p-8 shadow-md">
+                    <div class="mb-6">
+                        <span class="text-gray-500 text-xs font-bold uppercase tracking-wide">Actions</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <button class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-full transition-all shadow-lg hover:shadow-xl">
+                            I can help
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900 font-medium transition-all">
+                            Mark as solved
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-6">
+                
+                <!-- Requester -->
+                <div class="bg-white rounded-3xl p-6 shadow-md">
+                    <div class="mb-4">
+                        <span class="text-gray-500 text-xs font-bold uppercase tracking-wide">Requester</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            SN
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Sara Noor</h3>
+                            <p class="text-gray-500 text-sm">Karachi • Trust 74%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Helpers -->
+                <div class="bg-white rounded-3xl p-6 shadow-md">
+                    <div class="mb-4">
+                        <span class="text-gray-500 text-xs font-bold uppercase tracking-wide">Helpers</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">People ready to support</h3>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            AK
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-base font-bold text-gray-900">Ayesha Khan</h4>
+                            <p class="text-gray-500 text-sm">Figma, UI/UX, HTML/CSS</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="inline-block bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full">
+                                Trust 92%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Watermark -->
+    <div class="fixed bottom-4 right-4 text-gray-400 text-sm">
+        <p>Activate Windows</p>
+        <p class="text-xs">Go to Settings to activate Windows.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HelpHub AI — Explore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background: #f0ede6; }
+    h1,h2,h3,.sora { font-family: 'Sora', sans-serif; }
+
+    /* Gradient background mesh matching screenshot */
+    .page-bg {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 0% 0%, rgba(168,230,207,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255,200,150,0.3) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 100% 0%, rgba(200,240,220,0.2) 0%, transparent 50%),
+        #edeae2;
+    }
+
+    /* Custom select */
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    /* Card hover */
+    .req-card {
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .req-card:hover {
+      border-color: #2a9d8f !important;
+      box-shadow: 0 4px 20px rgba(42,157,143,0.12);
+    }
+
+    /* Open details btn hover */
+    .btn-open:hover { background: #2f2f2f; }
+
+    /* Fade in on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.45s ease both; }
+    .delay-1 { animation-delay: 0.05s; }
+    .delay-2 { animation-delay: 0.10s; }
+    .delay-3 { animation-delay: 0.15s; }
+    .delay-4 { animation-delay: 0.20s; }
+    .delay-5 { animation-delay: 0.25s; }
+  </style>
+</head>
+<body class="page-bg">
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="sticky top-0 z-50 bg-[#edeae2]/80 backdrop-blur-md border-b border-[#e0dbd2]">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <!-- Brand -->
+      <div class="flex items-center gap-2.5"  >
+        <a href="./index.html">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#2a9d8f;">
+          <span class="sora font-bold text-white text-sm">H</span>
+        </div>
+        <span class="sora font-bold text-[#1a1f2e] text-sm">HelpHub AI</span>
+      </div>
+      </a>
+      <!-- Links -->
+      <div class="flex items-center gap-1">
+        <a href="./Dashboard.html" class="sora text-[13px] font-500 text-[#6b7280] px-3 py-1.5 rounded-full hover:text-[#1a1f2e] transition-colors">Dashboard</a>
+        <a href="./Explore.html" class="sora text-[13px] font-600 px-3 py-1.5 rounded-full" style="background:#d4ede8;color:#2a9d8f;">Explore</a>
+        <a href="./Leader-Board.html" class="sora text-[13px] text-[#6b7280] px-3 py-1.5 rounded-full hover:text-[#1a1f2e] transition-colors">Leaderboard</a>
+        <a href="./Notifications.html" class="sora text-[13px] text-[#6b7280] px-3 py-1.5 rounded-full hover:text-[#1a1f2e] transition-colors">Notifications</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-6 py-8">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <div class="rounded-2xl px-10 py-10 mb-8 relative overflow-hidden fade-up" style="background:#1e2330;">
+      <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20" style="background:radial-gradient(circle, #2a9d8f 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+      <p class="sora text-[11px] font-600 tracking-widest uppercase mb-3" style="color:#2a9d8f;">Explore / Feed</p>
+      <h1 class="sora font-extrabold text-white leading-tight mb-3" style="font-size:clamp(24px,4vw,36px);">Browse help requests with filterable<br/>community context.</h1>
+      <p class="text-[#9ca3af] text-[14px]">Filter by category, urgency, skills, and location to surface the best matches.</p>
+    </div>
+
+    <!-- ═══════════════ BODY ═══════════════ -->
+    <div class="flex gap-6 items-start">
+
+      <!-- ── FILTER PANEL ── -->
+      <aside class="w-64 flex-shrink-0 sticky top-20 fade-up delay-1">
+        <div class="bg-white rounded-2xl p-6 border border-[#e8e3da]">
+          <p class="sora text-[10px] font-700 tracking-widest uppercase mb-1" style="color:#2a9d8f;">Filters</p>
+          <h2 class="sora font-extrabold text-[#1a1f2e] text-2xl leading-tight mb-6">Refine<br/>the feed</h2>
+
+          <!-- Category -->
+          <div class="mb-5">
+            <label class="sora text-[11px] font-600 text-[#6b7280] uppercase tracking-wide block mb-2">Category</label>
+            <select id="filter-category" onchange="filterCards()" class="w-full border border-[#e0dbd2] rounded-xl px-3 py-2.5 text-[13px] text-[#1a1f2e] bg-white focus:outline-none focus:border-[#2a9d8f] cursor-pointer">
+              <option value="">All categories</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Design">Design</option>
+              <option value="Career">Career</option>
+            </select>
+          </div>
+
+          <!-- Urgency -->
+          <div class="mb-5">
+            <label class="sora text-[11px] font-600 text-[#6b7280] uppercase tracking-wide block mb-2">Urgency</label>
+            <select id="filter-urgency" onchange="filterCards()" class="w-full border border-[#e0dbd2] rounded-xl px-3 py-2.5 text-[13px] text-[#1a1f2e] bg-white focus:outline-none focus:border-[#2a9d8f] cursor-pointer">
+              <option value="">All urgency levels</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+
+          <!-- Skills -->
+          <div class="mb-5">
+            <label class="sora text-[11px] font-600 text-[#6b7280] uppercase tracking-wide block mb-2">Skills</label>
+            <input id="filter-skills" oninput="filterCards()" type="text" placeholder="React, Figma, Git/Github" class="w-full border border-[#e0dbd2] rounded-xl px-3 py-2.5 text-[13px] text-[#1a1f2e] bg-white focus:outline-none focus:border-[#2a9d8f] placeholder-[#b0aaa0]"/>
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label class="sora text-[11px] font-600 text-[#6b7280] uppercase tracking-wide block mb-2">Location</label>
+            <input id="filter-location" oninput="filterCards()" type="text" placeholder="Karachi, Lahore, Remote" class="w-full border border-[#e0dbd2] rounded-xl px-3 py-2.5 text-[13px] text-[#1a1f2e] bg-white focus:outline-none focus:border-[#2a9d8f] placeholder-[#b0aaa0]"/>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── FEED ── -->
+      <div class="flex-1 flex flex-col gap-4" id="feed">
+
+        <!-- Card 1 -->
+        <div class="req-card bg-white rounded-2xl p-6 border border-[#e8e3da] fade-up delay-1"
+             data-category="Web Development" data-urgency="High" data-skills="html css" data-location="karachi">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#d4ede8;color:#2a9d8f;">Web Development</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#fee2e2;color:#dc2626;">High</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#dcfce7;color:#16a34a;">Solved</span>
+          </div>
+          <h3 class="sora font-bold text-[#1a1f2e] text-[15px] mb-1">Need help</h3>
+          <p class="text-[#6b7280] text-[13px] mb-4 leading-relaxed">help needed</p>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="sora font-600 text-[#1a1f2e] text-[13px]">Ayesha Khan</p>
+              <p class="text-[#9ca3af] text-[12px]">Karachi • 1 helper interested</p>
+            </div>
+            <a href="./Request.html">
+              <button class="btn-open sora font-600 text-[12px] bg-[#1a1f2e] text-white px-4 py-2 rounded-xl transition-colors cursor-pointer">Open details</button>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="req-card bg-white rounded-2xl p-6 border border-[#e8e3da] fade-up delay-2"
+             data-category="Web Development" data-urgency="High" data-skills="html/css responsive portfolio" data-location="karachi">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#d4ede8;color:#2a9d8f;">Web Development</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#fee2e2;color:#dc2626;">High</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#dcfce7;color:#16a34a;">Solved</span>
+          </div>
+          <h3 class="sora font-bold text-[#1a1f2e] text-[15px] mb-1">Need help making my portfolio responsive before demo day</h3>
+          <p class="text-[#6b7280] text-[13px] mb-3 leading-relaxed">My HTML/CSS portfolio breaks on tablets and I need layout guidance before tomorrow evening.</p>
+          <div class="flex gap-2 flex-wrap mb-4">
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">HTML/CSS</span>
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Responsive</span>
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Portfolio</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="sora font-600 text-[#1a1f2e] text-[13px]">Sara Noor</p>
+              <p class="text-[#9ca3af] text-[12px]">Karachi • 1 helper interested</p>
+            </div>
+            <button href="./Request.html" class="btn-open sora font-600 text-[12px] bg-[#1a1f2e] text-white px-4 py-2 rounded-xl transition-colors cursor-pointer">Open details</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="req-card bg-white rounded-2xl p-6 border border-[#e8e3da] fade-up delay-3"
+             data-category="Design" data-urgency="Medium" data-skills="figma poster design review" data-location="lahore">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#d4ede8;color:#2a9d8f;">Design</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#fef3c7;color:#b45309;">Medium</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#d4ede8;color:#2a9d8f;">Open</span>
+          </div>
+          <h3 class="sora font-bold text-[#1a1f2e] text-[15px] mb-1">Looking for Figma feedback on a volunteer event poster</h3>
+          <p class="text-[#6b7280] text-[13px] mb-3 leading-relaxed">I have a draft poster for a campus community event and want sharper hierarchy, spacing, and CTA copy.</p>
+          <div class="flex gap-2 flex-wrap mb-4">
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Figma</span>
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Poster</span>
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Design Review</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="sora font-600 text-[#1a1f2e] text-[13px]">Ayesha Khan</p>
+              <p class="text-[#9ca3af] text-[12px]">Lahore • 1 helper interested</p>
+            </div>
+            <button class="btn-open sora font-600 text-[12px] bg-[#1a1f2e] text-white px-4 py-2 rounded-xl transition-colors cursor-pointer">Open details</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="req-card bg-white rounded-2xl p-6 border border-[#e8e3da] fade-up delay-4"
+             data-category="Career" data-urgency="Low" data-skills="interview prep career frontend" data-location="remote">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#d4ede8;color:#2a9d8f;">Career</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#dcfce7;color:#16a34a;">Low</span>
+            <span class="sora text-[11px] font-600 px-3 py-1 rounded-full" style="background:#dcfce7;color:#16a34a;">Solved</span>
+          </div>
+          <h3 class="sora font-bold text-[#1a1f2e] text-[15px] mb-1">Need mock interview support for internship applications</h3>
+          <p class="text-[#6b7280] text-[13px] mb-3 leading-relaxed">Applying to frontend internships and need someone to practice behavioral and technical interview questions with me.</p>
+          <div class="flex gap-2 flex-wrap mb-4">
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Interview Prep</span>
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Career</span>
+            <span class="sora text-[11px] font-500 px-3 py-1 rounded-full bg-[#f3f4f6] text-[#374151]">Frontend</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="sora font-600 text-[#1a1f2e] text-[13px]">Sara Noor</p>
+              <p class="text-[#9ca3af] text-[12px]">Remote • 2 helpers interested</p>
+            </div>
+            <button class="btn-open sora font-600 text-[12px] bg-[#1a1f2e] text-white px-4 py-2 rounded-xl transition-colors cursor-pointer">Open details</button>
+          </div>
+        </div>
+
+        <!-- Empty state (hidden by default) -->
+        <div id="empty-state" class="hidden bg-white rounded-2xl p-12 border border-[#e8e3da] text-center">
+          <div class="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:#d4ede8;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <p class="sora font-700 text-[#1a1f2e] text-[16px] mb-2">No requests match your filters</p>
+          <p class="text-[#9ca3af] text-[13px] mb-5">Try adjusting or clearing your filters to see more results.</p>
+          <button onclick="clearFilters()" class="sora font-600 text-[13px] bg-[#1a1f2e] text-white px-5 py-2.5 rounded-xl hover:bg-[#2f2f2f] transition-colors">Clear filters</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterCards() {
+      const category = document.getElementById('filter-category').value.toLowerCase();
+      const urgency  = document.getElementById('filter-urgency').value.toLowerCase();
+      const skills   = document.getElementById('filter-skills').value.toLowerCase().trim();
+      const location = document.getElementById('filter-location').value.toLowerCase().trim();
+
+      const cards = document.querySelectorAll('.req-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cCat  = card.dataset.category.toLowerCase();
+        const cUrg  = card.dataset.urgency.toLowerCase();
+        const cSkil = card.dataset.skills.toLowerCase();
+        const cLoc  = card.dataset.location.toLowerCase();
+
+        const matchCat  = !category || cCat.includes(category);
+        const matchUrg  = !urgency  || cUrg.includes(urgency);
+        const matchSkil = !skills   || cSkil.includes(skills);
+        const matchLoc  = !location || cLoc.includes(location);
+
+        if (matchCat && matchUrg && matchSkil && matchLoc) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('empty-state').classList.toggle('hidden', visible > 0);
+    }
+
+    function clearFilters() {
+      document.getElementById('filter-category').value = '';
+      document.getElementById('filter-urgency').value  = '';
+      document.getElementById('filter-skills').value   = '';
+      document.getElementById('filter-location').value = '';
+      filterCards();
+    }
+  </script>
+</body>
+</html>

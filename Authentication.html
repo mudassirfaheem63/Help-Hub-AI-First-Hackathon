@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HelpHub AI – Community Access</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal:    '#1aab8a',
+              dark:    '#1e3830',
+              bg:      '#ede9e0',
+            }
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #F1ECE2;  /* Modeled to perfectly match the warm aesthetic of Pic 1 */
+      background-image:
+        radial-gradient(ellipse 60% 60% at 5% 0%, rgba(26,171,138,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 95% 0%, rgba(230,185,120,0.3) 0%, transparent 65%);
+      min-height: 100vh;
+    }
+
+    /* Dropdown arrow custom styling */
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 antialiased overflow-x-hidden">
+
+ <!-- ─────────────── NAVBAR  ─────────────── -->
+<nav class="flex items-center justify-between px-10 py-4 bg-transparent max-w-[1140px] w-full mx-auto">
+  <!-- Logo -->
+  <div class="flex items-center gap-[12px] flex-none" >
+    <a href="./index.html">
+      <div class="w-[40px] h-[40px] bg-gradient-to-tr from-[#0F766E] to-[#14B8A6] rounded-[13px] flex items-center justify-cen  ter shrink-0">
+        <span class="text-white text-[18px] font-bold">H</span>
+      </div>
+      <span class="text-[19px] font-semibold text-[#1A1A1A] whitespace-nowrap">HelpHub AI</span>
+    </a>
+    </div>
+
+  <!-- Nav links -->
+  <div class="flex items-center gap-8">
+    <a href="./index.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Home</a>
+    <a href="./Explore.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Explore</a>
+    <a href="./Leader-Board.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Leaderboard</a>
+  </div>
+</nav>
+
+  <!-- ─────────────── HERO / CARDS ─────────────── -->
+  <main class="flex justify-center items-stretch gap-6 px-10 pt-4 pb-16 max-w-[1140px] mx-auto">
+
+    <!-- LEFT CARD — dark -->
+    <!-- Enforced large 36px border radii to capture the soft floating card feeling from Pic 1 -->
+    <div class="flex-1 w-full bg-brand-dark rounded-[36px] p-12 text-white flex flex-col justify-center min-h-[540px] shadow-lg relative overflow-hidden">
+      <!-- Added a very subtle soft light orb to match the premium design feel -->
+      <div class="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-white/5 blur-[100px] pointer-events-none rounded-full"></div>
+      
+      <div class="max-w-[420px] relative z-10">
+        <p class="text-[11px] font-[800] tracking-[0.16em] uppercase text-[#90AFAF] mb-5">
+          COMMUNITY ACCESS
+        </p>
+
+        <!-- Title tightened and massive to establish hierarchy -->
+        <h1 class="text-[48px] font-[900] leading-[1.02] tracking-tight mb-6 text-[#F9FAFB]">
+          Enter the support<br/>network.
+        </h1>
+
+        <p class="text-[15px] text-[#D1D5DB] leading-[1.65] mb-8 font-medium">
+          Choose a demo identity, set your role, and jump into a multi-page product flow designed for asking, offering, and tracking help with a premium interface.
+        </p>
+
+        <ul class="space-y-4 text-[14.5px] text-[#E5E7EB] font-medium">
+          <li class="flex items-start gap-4">
+            <span class="mt-[7px] w-[6px] h-[6px] rounded-full bg-[#90AFAF] flex-shrink-0"></span>
+            Role-based entry for Need Help, Can Help, or Both
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-[7px] w-[6px] h-[6px] rounded-full bg-[#90AFAF] flex-shrink-0"></span>
+            Direct path into dashboard, requests, AI Center, and community feed
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="mt-[7px] w-[6px] h-[6px] rounded-full bg-[#90AFAF] flex-shrink-0"></span>
+            Persistent demo session powered by LocalStorage
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT CARD — light -->
+    <div class="flex-1 w-full bg-[#FCFBF8] rounded-[36px] p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col justify-center min-h-[540px] border border-white/60">
+      <div class="max-w-[420px] mx-auto w-full">
+        <p class="text-[11px] font-[800] tracking-[0.16em] uppercase text-brand-teal mb-5">
+          LOGIN / SIGNUP
+        </p>
+
+        <h2 class="text-[44px] font-[900] leading-[1.04] tracking-tight text-[#111827] mb-10">
+          Authenticate your<br/>community profile
+        </h2>
+
+        <div class="space-y-5">
+
+          <!-- Select demo user -->
+          <div>
+            <label class="block text-[13px] font-[800] text-[#4B5563] mb-2">Select demo user</label>
+            <!-- Shifted inputs to completely rounded pill-like borders matching the modern look -->
+            <select class="w-full border border-[#E5E7EB] rounded-[18px] px-5 py-[18px] text-[15px] font-semibold text-[#1F2937] bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/40 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:border-gray-300 transition-colors">
+              <option>Ayesha Khan</option>
+              <option>Omar Farooq</option>
+              <option>Sara Ahmed</option>
+              <option>Zain Malik</option>
+            </select>
+          </div>
+
+          <!-- Role selection -->
+          <div>
+            <label class="block text-[13px] font-[800] text-[#4B5563] mb-2">Role selection</label>
+            <select class="w-full border border-[#E5E7EB] rounded-[18px] px-5 py-[18px] text-[15px] font-semibold text-[#1F2937] bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/40 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:border-gray-300 transition-colors">
+              <option>Both</option>
+              <option>Need Help</option>
+              <option>Can Help</option>
+            </select>
+          </div>
+
+          <!-- Email & Password -->
+          <div class="flex gap-4">
+            <div class="flex-1">
+              <label class="block text-[13px] font-[800] text-[#4B5563] mb-2">Email</label>
+              <input
+                type="email"
+                value="community@helphub.ai"
+                class="w-full border border-[#E5E7EB] rounded-[18px] px-5 py-[18px] text-[15px] font-semibold text-[#4B5563] bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/40 shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-colors"
+                readonly
+              />
+            </div>
+            <div class="flex-1">
+              <label class="block text-[13px] font-[800] text-[#4B5563] mb-2">Password</label>
+              <input
+                type="password"
+                value="password123"
+                class="w-full border border-[#E5E7EB] rounded-[18px] px-5 py-[18px] text-[15px] font-[900] text-[#111827] bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/40 shadow-[0_2px_10px_rgba(0,0,0,0.02)] font-sans tracking-[0.2em] transition-colors"
+                readonly
+              />
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <!-- Upgraded to a perfectly curved pill button, darker teal, bold text to mirror the reference picture seamlessly. -->
+          <a href="./Dashboard.html">
+            <button  class="w-full bg-[#18A385] hover:bg-[#148F73] active:scale-[0.99] transition-all text-white font-[800] text-[16px] tracking-wide py-[18px] rounded-[24px] mt-4 shadow-[0_8px_20px_rgba(24,163,133,0.25)]">
+            Continue to dashboard
+          </button>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

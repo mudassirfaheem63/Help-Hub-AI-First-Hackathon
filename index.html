@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HelpHub AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:        '#EDE8DC',
+            'cream-dark': '#E2DDD1',
+            'cream-border':'#D8D3C8',
+            brand:        '#1B2B1B',
+            olive:        '#7A7A52',
+            gold:         '#D4A017',
+            'card-muted': '#4A4A4A',
+            'dark-para':  '#B8B89A',
+          },
+          fontFamily: {
+            sans: ['"DM Sans"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="font-sans text-[#1A1A1A] bg-cream antialiased">
+  <nav class="w-full h-[72px] bg-transparent flex items-center relative z-50 px-8">
+    <div class="max-w-[1320px] mx-auto w-full flex items-center justify-between">
+      
+      <!-- LEFT: Logo + Brand -->
+      <div class="flex items-center gap-[12px] flex-none">
+        <div class="w-[40px] h-[40px] bg-gradient-to-tr from-[#0F766E] to-[#14B8A6] rounded-[13px] flex items-center justify-center shrink-0">
+          <span class="text-white text-[18px] font-bold">H</span>
+        </div>
+        <span class="text-[19px] font-semibold text-[#1A1A1A] whitespace-nowrap">HelpHub AI</span>
+      </div>
+
+      <!-- CENTER: Nav Links -->
+      <div class="hidden md:flex items-center flex-1 justify-center gap-[26px]">
+        <!-- Home is active -->
+        <a href="./index.html" class="px-[18px] py-[10px] text-[16px] font-semibold text-[#1A1A1A] bg-[#D4E4D4] rounded-full whitespace-nowrap">Home</a>
+        <a href="./Explore.html" class="text-[16px] font-medium text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors whitespace-nowrap">Explore</a>
+        <a href="./Leader-Board.html" class="text-[16px] font-medium text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors whitespace-nowrap">Leaderboard</a>
+        <a href="./AI-center.html" class="text-[16px] font-medium text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors whitespace-nowrap">AI Center</a>
+      </div>
+
+      <!-- RIGHT: Signal text + CTA button -->
+      <div class="flex items-center gap-[20px] flex-none justify-end">
+        <span class="hidden md:inline text-[15px] font-medium text-[#6B6B6B] whitespace-nowrap">Live community signals</span>
+        <a href="./Authentication.html" class="bg-[#10B981] text-white text-[16px] font-bold px-[22px] py-[12px] rounded-full whitespace-nowrap hover:brightness-110 transition">Join the platform</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="max-w-[1140px] mx-auto px-6">
+    <section class="flex flex-col lg:flex-row items-stretch gap-[64px] pt-[64px] pb-[96px]">
+      
+      <!-- LEFT COLUMN -->
+      <div class="flex flex-col lg:w-[55%] justify-center bg-white/35 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.02)] rounded-[24px] px-[28px] py-[28px] relative overflow-hidden">
+        
+        <!-- ✅ SUN ORB -->
+        <div style="position: absolute; top: -60px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(212,180,100,0.35) 0%, rgba(212,180,100,0.12) 45%, transparent 70%); pointer-events: none; z-index: 0;"></div>
+
+        <div style="position: relative; z-index: 1;" class="flex flex-col">
+          <p class="text-[13px] font-bold tracking-[0.12em] uppercase text-[#A38940] mb-[14px]">SMIT GRAND CODING NIGHT 2026</p>
+          <h1 class="text-[56px] xl:text-[64px] font-[900] leading-[1.04] tracking-tight text-[#111827] mb-[18px]">
+            Find help faster.<br class="hidden xl:block"/>
+            Become help that<br class="hidden xl:block"/>
+            matters.
+          </h1>
+          <p class="text-[16px] font-normal text-[#374151] leading-[1.6] mb-[32px] max-w-[520px]">
+            HelpHub AI is a community-powered support network for students, mentors,
+            creators, and builders. Ask for help, offer help, track impact, and let AI surface
+            smarter matches across the platform.
+          </p>
+          
+          <!-- CTA buttons row -->
+          <div class="flex flex-row items-center gap-[18px] mb-[40px]">
+            <a href="#" class="bg-[#111827] text-white text-[15px] font-bold px-[28px] h-[48px] flex items-center justify-center rounded-full hover:bg-black transition border border-[#111827]">
+              Open product demo
+            </a>
+            <a href="#" class="bg-transparent text-[#111827] text-[15px] font-bold px-[28px] h-[48px] flex items-center justify-center rounded-full border-[1.5px] border-[#111827] hover:bg-[#F3F4F6] transition">
+              Post a request
+            </a>
+          </div>
+          
+          <!-- Stats cards row -->
+          <div class="flex flex-col sm:flex-row gap-[22px] w-full">
+            <div class="bg-[#F3F0E9] rounded-[18px] p-[18px] flex-1">
+              <p class="text-[12px] font-[800] uppercase tracking-[0.1em] text-[#64748B] mb-1">MEMBERS</p>
+              <p class="text-[36px] xl:text-[40px] font-[900] text-[#111827] leading-[1] mb-1.5 tracking-tight">384+</p>
+              <p class="text-[13px] font-medium text-[#475569] leading-[1.45]">Students, mentors, and helpers in the loop.</p>
+            </div>
+            <div class="bg-[#F3F0E9] rounded-[18px] p-[18px] flex-1">
+              <p class="text-[12px] font-[800] uppercase tracking-[0.1em] text-[#64748B] mb-1">REQUESTS</p>
+              <p class="text-[36px] xl:text-[40px] font-[900] text-[#111827] leading-[1] mb-1.5 tracking-tight">72+</p>
+              <p class="text-[13px] font-medium text-[#475569] leading-[1.45]">Support posts shared across learning journeys.</p>
+            </div>
+            <div class="bg-[#F3F0E9] rounded-[18px] p-[18px] flex-1">
+              <p class="text-[12px] font-[800] uppercase tracking-[0.1em] text-[#64748B] mb-1">SOLVED</p>
+              <p class="text-[36px] xl:text-[40px] font-[900] text-[#111827] leading-[1] mb-1.5 tracking-tight">69+</p>
+              <p class="text-[13px] font-medium text-[#475569] leading-[1.45]">Problems resolved through fast community action.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="bg-gradient-to-br from-[#132A24] to-[#0D1C18] rounded-[28px] pt-[26px] px-[26px] pb-[22px] flex flex-col lg:w-[45%] relative w-full border border-white/5" style="box-shadow: 0 20px 60px rgba(0,0,0,0.28), 0 8px 24px rgba(0,0,0,0.18);">
+        
+        <!-- Yellow Sun Accent -->
+        <div class="absolute top-[16px] right-[18px] w-[50px] h-[50px] rounded-full bg-gradient-to-tr from-[#D4A017] to-[#FDE047] shadow-[0_0_24px_rgba(212,160,23,0.4)] z-0 pointer-events-none"></div>
+
+        <p class="text-[13px] font-[800] uppercase tracking-[0.14em] text-[#9CA3AF] mb-[16px] relative z-10">LIVE PRODUCT FEEL</p>
+
+        <h2 class="text-[38px] xl:text-[44px] font-[900] leading-[1.05] tracking-tight text-[#F9FAFB] mb-[14px] relative z-10">
+          More than a form.<br />
+          More like an<br />
+          ecosystem.
+        </h2>
+        
+        <p class="text-[15px] text-[#D1D5DB] leading-[1.55] mb-[22px] font-medium max-w-[420px] relative z-10">
+          A polished multi-page experience inspired by product platforms, with AI summaries,
+          trust scores, contribution signals, notifications, and leaderboard momentum.
+        </p>
+        
+        <!-- Feature Tiles -->
+        <div class="flex flex-col gap-[16px] relative z-10 mt-auto">
+          <div class="bg-[#FDFDFD] rounded-[18px] p-[18px] hover:shadow-md transition">
+            <p class="text-[16px] font-[900] text-[#111827] mb-[6px]">AI request intelligence</p>
+            <p class="text-[14px] font-medium text-[#4B5563] leading-[1.5]">Auto-categorization, urgency detection, tags, rewrite suggestions, and trend snapshots.</p>
+          </div>
+          <div class="bg-[#FDFDFD] rounded-[18px] p-[18px] hover:shadow-md transition">
+            <p class="text-[16px] font-[900] text-[#111827] mb-[6px]">Community trust graph</p>
+            <p class="text-[14px] font-medium text-[#4B5563] leading-[1.5]">Badges, helper rankings, trust score boosts, and visible contribution history.</p>
+          </div>
+          <div class="bg-[#FDFDFD] rounded-[18px] p-[18px] hover:shadow-md transition">
+            <p class="text-[22px] font-[900] tracking-tight text-[#111827] mb-[6px]">100%</p>
+            <p class="text-[14px] font-medium text-[#4B5563] leading-[1.5]">Top trust score currently active across the sample mentor network.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24 pt-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-olive mb-3">CORE FLOW</p>
+          <h2 class="text-[38px] font-extrabold leading-[1.1] tracking-tight text-[#1A1A1A]">From struggling alone to solving together</h2>
+        </div>
+        <div class="shrink-0 pb-1">
+          <a href="#" class="border-[1.5px] border-[#1B2B1B] text-[#1B2B1B] text-[14px] font-bold px-6 py-2.5 rounded-full bg-white/50 hover:bg-white transition whitespace-nowrap shadow-sm">
+            Try onboarding AI
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-5">
+        <div class="bg-white rounded-[20px] p-7 md:p-8 flex-1 shadow-sm border border-[#E0DAD0] hover:shadow-md transition">
+          <h3 class="text-[17px] font-bold text-[#1A1A1A] mb-3">Ask for help clearly</h3>
+          <p class="text-[14px] font-medium text-[#5A5A5A] leading-[1.6]">Create structured requests with category, urgency, AI suggestions, and tags that attract the right people.</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-7 md:p-8 flex-1 shadow-sm border border-[#E0DAD0] hover:shadow-md transition">
+          <h3 class="text-[17px] font-bold text-[#1A1A1A] mb-3">Discover the right people</h3>
+          <p class="text-[14px] font-medium text-[#5A5A5A] leading-[1.6]">Use the explore feed, helper lists, notifications, and messaging to move quickly once a match happens.</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-7 md:p-8 flex-1 shadow-sm border border-[#E0DAD0] hover:shadow-md transition">
+          <h3 class="text-[17px] font-bold text-[#1A1A1A] mb-3">Track real contribution</h3>
+          <p class="text-[14px] font-medium text-[#5A5A5A] leading-[1.6]">Trust scores, badges, solved requests, and rankings help the community recognize meaningful support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-olive mb-3">FEATURED REQUESTS</p>
+          <h2 class="text-[38px] font-extrabold leading-[1.1] tracking-tight text-[#1A1A1A]">Community problems currently in motion</h2>
+        </div>
+        <div class="shrink-0 pb-1">
+          <a href="#" class="border-[1.5px] border-[#1B2B1B] text-[#1B2B1B] text-[14px] font-bold px-6 py-2.5 rounded-full bg-white/50 hover:bg-white transition whitespace-nowrap shadow-sm">
+            View full feed
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-5">
+        <div class="bg-white border border-[#E0DAD0] rounded-[20px] p-6 lg:p-7 flex flex-col flex-1 shadow-sm hover:shadow-md transition group">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[12px] font-semibold border border-[#DCD7CB] bg-[#F5F1E9] text-[#4A4A4A] rounded-md px-2.5 py-1">Web Development</span>
+            <span class="text-[12px] font-semibold border border-[#FFD9D9] bg-[#FFF0F0] text-[#D93D3D] rounded-md px-2.5 py-1">High</span>
+            <span class="text-[12px] font-semibold border border-[#D1EBD9] bg-[#E8F5EC] text-[#298C49] rounded-md px-2.5 py-1">Solved</span>
+          </div>
+          <h4 class="text-[17px] font-bold text-[#1A1A1A] mb-2 leading-snug">Need help</h4>
+          <p class="text-[14px] font-medium text-[#6B6B6B] leading-relaxed mb-8 flex-1">helpn needed</p>
+          <div class="mt-auto border-t border-[#F0EBE0] pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <p class="text-[14px] font-bold text-[#1A1A1A] mb-0.5">Ayesha Khan</p>
+              <p class="text-[13px] font-medium text-[#8A8A8A]">Karachi • 1 helper interested</p>
+            </div>
+            <a href="#" class="text-[13px] font-bold text-[#1B2B1B] bg-white border border-[#E0DAD0] px-4 py-2 rounded-full shadow-sm whitespace-nowrap group-hover:bg-[#F9F8F5] transition">Open details</a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-[#E0DAD0] rounded-[20px] p-6 lg:p-7 flex flex-col flex-1 shadow-sm hover:shadow-md transition group">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[12px] font-semibold border border-[#DCD7CB] bg-[#F5F1E9] text-[#4A4A4A] rounded-md px-2.5 py-1">Web Development</span>
+            <span class="text-[12px] font-semibold border border-[#FFD9D9] bg-[#FFF0F0] text-[#D93D3D] rounded-md px-2.5 py-1">High</span>
+            <span class="text-[12px] font-semibold border border-[#D1EBD9] bg-[#E8F5EC] text-[#298C49] rounded-md px-2.5 py-1">Solved</span>
+          </div>
+          <h4 class="text-[17px] font-bold text-[#1A1A1A] mb-2 leading-snug">Need help making my portfolio responsive before demo day</h4>
+          <p class="text-[14px] font-medium text-[#6B6B6B] leading-relaxed mb-4">My HTML/CSS portfolio breaks on tablets and I need layout guidance before tomorrow evening.</p>
+          <div class="flex flex-wrap gap-2 mb-8 flex-1">
+            <span class="text-[12px] font-semibold bg-[#F5F1E9] text-[#5A5A5A] rounded-md px-2 py-0.5">HTML/CSS</span>
+            <span class="text-[12px] font-semibold bg-[#F5F1E9] text-[#5A5A5A] rounded-md px-2 py-0.5">Responsive</span>
+            <span class="text-[12px] font-semibold bg-[#F5F1E9] text-[#5A5A5A] rounded-md px-2 py-0.5">Portfolio</span>
+          </div>
+          <div class="mt-auto border-t border-[#F0EBE0] pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <p class="text-[14px] font-bold text-[#1A1A1A] mb-0.5">Sara Noor</p>
+              <p class="text-[13px] font-medium text-[#8A8A8A]">Karachi • 1 helper interested</p>
+            </div>
+            <a href="#" class="text-[13px] font-bold text-[#1B2B1B] bg-white border border-[#E0DAD0] px-4 py-2 rounded-full shadow-sm whitespace-nowrap group-hover:bg-[#F9F8F5] transition">Open details</a>
+          </div>
+        </div>
+
+        <div class="bg-white border border-[#E0DAD0] rounded-[20px] p-6 lg:p-7 flex flex-col flex-1 shadow-sm hover:shadow-md transition group">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[12px] font-semibold border border-[#DCD7CB] bg-[#F5F1E9] text-[#4A4A4A] rounded-md px-2.5 py-1">Design</span>
+            <span class="text-[12px] font-semibold border border-[#EBE3D3] bg-[#FAF7F0] text-[#8C7A55] rounded-md px-2.5 py-1">Medium</span>
+            <span class="text-[12px] font-semibold border border-[#D6E6F2] bg-[#EBF4FA] text-[#3D7199] rounded-md px-2.5 py-1">Open</span>
+          </div>
+          <h4 class="text-[17px] font-bold text-[#1A1A1A] mb-2 leading-snug">Looking for Figma feedback on a volunteer event poster</h4>
+          <p class="text-[14px] font-medium text-[#6B6B6B] leading-relaxed mb-4">I have a draft poster for a campus community event and want sharper hierarchy, spacing, and CTA copy.</p>
+          <div class="flex flex-wrap gap-2 mb-8 flex-1">
+            <span class="text-[12px] font-semibold bg-[#F5F1E9] text-[#5A5A5A] rounded-md px-2 py-0.5">Figma</span>
+            <span class="text-[12px] font-semibold bg-[#F5F1E9] text-[#5A5A5A] rounded-md px-2 py-0.5">Poster</span>
+            <span class="text-[12px] font-semibold bg-[#F5F1E9] text-[#5A5A5A] rounded-md px-2 py-0.5">Design Review</span>
+          </div>
+          <div class="mt-auto border-t border-[#F0EBE0] pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <p class="text-[14px] font-bold text-[#1A1A1A] mb-0.5">Ayesha Khan</p>
+              <p class="text-[13px] font-medium text-[#8A8A8A]">Lahore • 1 helper interested</p>
+            </div>
+            <a href="#" class="text-[13px] font-bold text-[#1B2B1B] bg-white border border-[#E0DAD0] px-4 py-2 rounded-full shadow-sm whitespace-nowrap group-hover:bg-[#F9F8F5] transition">Open details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-[#E0DAD0] px-6 py-8 pb-12 bg-[#EDE8DC]">
+    <div class="max-w-[1140px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2 grayscale opacity-80">
+        <div class="w-6 h-6 bg-brand rounded flex items-center justify-center shrink-0">
+          <span class="text-white text-[11px] font-bold">H</span>
+        </div>
+        <span class="text-[13px] font-bold text-[#1A1A1A]">HelpHub AI</span>
+      </div>
+      <p class="text-[13px] font-medium text-[#8A8A8A] text-center md:text-right">
+        HelpHub AI is built as a premium-feel, multi-page community support product using HTML, CSS, JavaScript, and LocalStorage.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

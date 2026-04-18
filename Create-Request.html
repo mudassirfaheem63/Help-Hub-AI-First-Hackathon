@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HelpHub AI — Create Request</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    .sora { font-family: 'Sora', sans-serif; }
+
+    .page-bg {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 55% 45% at 0% 0%, rgba(168,230,207,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255,210,160,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 100% 0%, rgba(200,240,220,0.2) 0%, transparent 50%),
+        #edeae2;
+    }
+
+    input, textarea, select {
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42,157,143,0.12);
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: #fff;
+    }
+
+    .btn-publish {
+      background: #2a9d8f;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    .btn-publish:hover  { background: #239187; }
+    .btn-publish:active { transform: scale(0.98); }
+
+    .btn-ai {
+      background: #fff;
+      border: 1.5px solid #d1cdc6;
+      color: #1a1f2e;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .btn-ai:hover { border-color: #2a9d8f; color: #2a9d8f; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.4s ease both; }
+    .d1 { animation-delay: 0.05s; }
+    .d2 { animation-delay: 0.12s; }
+  </style>
+</head>
+<body class="page-bg">
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav class="sticky top-0 z-50" style="background:#edeae2;">
+    <div class="max-w-6xl mx-auto px-8" style="height:56px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;"  >
+        <a href="./index.html">
+        <div style="width:32px;height:32px;background:#2a9d8f;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+          <span class="sora" style="font-weight:800;color:#fff;font-size:14px;">H</span>
+        </div>
+        <span class="sora" style="font-weight:700;color:#1a1f2e;font-size:14px;">HelpHub AI</span>
+      </a>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <a href="./Dashboard.html" class="sora" style="font-size:13px;font-weight:500;color:#6b7280;padding:6px 14px;border-radius:999px;text-decoration:none;">Dashboard</a>
+        <a href="./Explore.html" class="sora" style="font-size:13px;font-weight:500;color:#6b7280;padding:6px 14px;border-radius:999px;text-decoration:none;">Explore</a>
+        <a href="./Create-Request.html" class="sora" style="font-size:13px;font-weight:600;color:#2a9d8f;padding:6px 16px;border-radius:999px;border:1.5px solid #2a9d8f;text-decoration:none;background:transparent;">Create Request</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-8 py-8">
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <div class="rounded-2xl px-12 py-12 mb-8 relative overflow-hidden fade-up" style="background:#1e2330;">
+      <div class="absolute top-0 right-0 w-72 h-72 rounded-full opacity-20" style="background:radial-gradient(circle,#2a9d8f 0%,transparent 70%);transform:translate(30%,-30%);"></div>
+      <p class="sora text-[11px] font-semibold tracking-widest uppercase mb-4" style="color:#2a9d8f;">Create Request</p>
+      <h1 class="sora font-extrabold text-white leading-tight mb-4" style="font-size:clamp(32px,4.5vw,50px);max-width:800px;">Turn a rough problem into a clear help request.</h1>
+      <p class="text-[#9ca3af] text-[15px]">Use built-in AI suggestions for category, urgency, tags, and a stronger description rewrite.</p>
+    </div>
+
+    <!-- ═══════════ BODY ═══════════ -->
+    <div style="display:flex;gap:20px;align-items:flex-start;">
+
+      <!-- LEFT: Form — 60% width -->
+      <div class="bg-white rounded-2xl p-9 border border-[#e8e3da] fade-up d1" style="flex:6;min-width:0;">
+
+        <!-- Title -->
+        <div class="mb-5">
+          <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">Title</label>
+          <input id="inp-title" type="text" value="Need review on my JavaScript quiz app before submission"
+            oninput="updateAI()"
+            class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] bg-white"/>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-5">
+          <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">Description</label>
+          <textarea id="inp-desc" rows="7" placeholder="Explain the challenge, your current progress, deadline, and what kind of help would be useful."
+            oninput="updateAI()"
+            class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] placeholder-[#b0aaa0] resize-y leading-relaxed"></textarea>
+        </div>
+
+        <!-- Tags + Category row -->
+        <div class="grid grid-cols-2 gap-4 mb-5">
+          <div>
+            <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">Tags</label>
+            <input id="inp-tags" type="text" value="JavaScript, Debugging, Review"
+              class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] bg-white"/>
+          </div>
+          <div>
+            <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">Category</label>
+            <select id="inp-category" onchange="updateAI()" class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] cursor-pointer">
+              <option>Web Development</option>
+              <option>Design</option>
+              <option>Career</option>
+              <option>Community</option>
+              <option>Writing</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Urgency -->
+        <div class="mb-7">
+          <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">Urgency</label>
+          <select id="inp-urgency" onchange="updateAI()" class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] cursor-pointer">
+            <option>High</option>
+            <option>Medium</option>
+            <option selected>Low</option>
+          </select>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex items-center gap-3">
+          <button onclick="applyAI()" class="btn-ai sora font-semibold text-[13px] px-6 py-3 rounded-full cursor-pointer">
+            Apply AI suggestions
+          </button>
+          <a href="./Request.html">
+            <button class="btn-publish sora font-semibold text-white text-[13px] px-7 py-3 rounded-full cursor-pointer">
+            Publish request
+          </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: AI Assistant — 40% width -->
+      <div class="bg-white rounded-2xl p-9 border border-[#e8e3da] fade-up d2" style="flex:4;min-width:0;">
+        <p class="sora text-[10px] font-bold tracking-widest uppercase mb-2" style="color:#2a9d8f;">AI Assistant</p>
+        <h2 class="sora font-bold text-[#1a1f2e] text-[28px] leading-tight mb-7">Smart request<br/>guidance</h2>
+
+        <!-- Suggested category -->
+        <div class="flex items-start justify-between py-4 border-b border-[#f0ece4]">
+          <span class="text-[#374151] text-[13px] min-w-[140px]">Suggested category</span>
+          <span id="ai-category" class="sora font-bold text-[#1a1f2e] text-[13px] text-right">Community</span>
+        </div>
+
+        <!-- Detected urgency -->
+        <div class="flex items-start justify-between py-4 border-b border-[#f0ece4]">
+          <span class="text-[#374151] text-[13px] min-w-[140px]">Detected urgency</span>
+          <span id="ai-urgency" class="sora font-bold text-[#1a1f2e] text-[13px] text-right">Low</span>
+        </div>
+
+        <!-- Suggested tags -->
+        <div class="flex items-start justify-between py-4 border-b border-[#f0ece4]">
+          <span class="text-[#374151] text-[13px] min-w-[140px]">Suggested tags</span>
+          <span id="ai-tags" class="sora font-bold text-[#1a1f2e] text-[13px] text-right max-w-[200px]">Add more detail for smarter tags</span>
+        </div>
+
+        <!-- Rewrite suggestion -->
+        <div class="flex items-start justify-between py-4">
+          <span class="text-[#374151] text-[13px] min-w-[140px]">Rewrite<br/>suggestion</span>
+          <span id="ai-rewrite" class="sora font-bold text-[#1a1f2e] text-[13px] text-right max-w-[200px] leading-snug">Start describing the challenge to generate a stronger version.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Live AI panel updates based on form inputs
+    function updateAI() {
+      const title    = document.getElementById('inp-title').value.trim();
+      const desc     = document.getElementById('inp-desc').value.trim();
+      const category = document.getElementById('inp-category').value;
+      const urgency  = document.getElementById('inp-urgency').value;
+
+      // Suggested category
+      const catEl = document.getElementById('ai-category');
+      const catMap = {
+        'Web Development': 'Web Development',
+        'Design': 'Design / Visual',
+        'Career': 'Career Growth',
+        'Community': 'Community',
+        'Writing': 'Writing / Docs'
+      };
+      catEl.textContent = catMap[category] || category;
+
+      // Detected urgency
+      document.getElementById('ai-urgency').textContent = urgency || 'Low';
+
+      // Suggested tags
+      const tagsEl = document.getElementById('ai-tags');
+      if (title.length > 10) {
+        const words = title.split(' ').filter(w => w.length > 4).slice(0, 3);
+        tagsEl.textContent = words.length ? words.join(', ') : 'Add more detail for smarter tags';
+      } else {
+        tagsEl.textContent = 'Add more detail for smarter tags';
+      }
+
+      // Rewrite suggestion
+      const rewriteEl = document.getElementById('ai-rewrite');
+      if (desc.length > 20) {
+        rewriteEl.textContent = '"' + desc.slice(0, 72).trim() + (desc.length > 72 ? '…' : '') + '" — looks good, consider adding a deadline.';
+      } else if (title.length > 10) {
+        rewriteEl.textContent = 'Add a description to generate a stronger rewrite.';
+      } else {
+        rewriteEl.textContent = 'Start describing the challenge to generate a stronger version.';
+      }
+    }
+
+    function applyAI() {
+      const category = document.getElementById('inp-category').value;
+      const urgency  = document.getElementById('inp-urgency').value;
+      const title    = document.getElementById('inp-title').value.trim();
+
+      // Auto-fill tags from title words
+      if (title.length > 5) {
+        const autoTags = title.split(' ').filter(w => w.length > 3).slice(0, 4).join(', ');
+        document.getElementById('inp-tags').value = autoTags;
+      }
+
+      // Flash AI panel
+      const panel = document.querySelector('.fade-up.d2');
+      panel.style.transition = 'box-shadow 0.3s ease';
+      panel.style.boxShadow = '0 0 0 2px #2a9d8f';
+      setTimeout(() => { panel.style.boxShadow = ''; }, 600);
+
+      updateAI();
+    }
+
+    // Init
+    updateAI();
+  </script>
+</body>
+</html>

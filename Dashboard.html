@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HelpHub AI – Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif; min-height: 100vh; color: #1a1a1a;
+      background-color: #eee9df;
+      background-image:
+        radial-gradient(ellipse at 0% 40%, rgba(160,210,185,0.55) 0%, transparent 48%),
+        radial-gradient(ellipse at 100% 15%, rgba(240,215,170,0.55) 0%, transparent 48%),
+        radial-gradient(ellipse at 60% 90%, rgba(220,210,190,0.35) 0%, transparent 50%);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(238,233,223,0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 28px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 11px; background: #1a9e8f;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 800; font-size: 16px;
+    }
+    .logo-text { font-weight: 600; color: #1a1a1a; font-size: 15px; letter-spacing: -0.3px; }
+    .nav-center { display: flex; align-items: center; gap: 2px; }
+    .nav-link {
+      padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 400;
+      color: #666; text-decoration: none; transition: color 0.2s; white-space: nowrap;
+    }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { background: #dde8e6; color: #1a6a5e; font-weight: 500; }
+    .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .notif-btn {
+      padding: 8px 20px; border-radius: 999px; font-size: 14px; font-weight: 500;
+      color: #1a1a1a; text-decoration: none; border: 1.5px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.6); transition: background 0.2s;
+    }
+    .notif-btn:hover { background: white; }
+    .ai-btn {
+      padding: 10px 22px; border-radius: 999px; font-size: 14px; font-weight: 600;
+      color: white; background: #1a9e8f; text-decoration: none;
+      transition: background 0.2s; white-space: nowrap;
+    }
+    .ai-btn:hover { background: #127a6e; }
+
+    /* HERO */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .hero-box {
+      background: linear-gradient(135deg, #1e2125 0%, #252b30 100%);
+      border-radius: 20px; padding: 48px 52px 44px; position: relative; overflow: hidden;
+      margin-top: 28px;
+    }
+    .blob1 { position:absolute; right:-40px; top:-40px; width:260px; height:260px; border-radius:50%; background:rgba(26,158,143,0.18); filter:blur(65px); pointer-events:none; }
+    .blob2 { position:absolute; right:120px; bottom:-10px; width:160px; height:160px; border-radius:50%; background:rgba(26,158,143,0.1); filter:blur(40px); pointer-events:none; }
+    .hero-label { font-size:11px; font-weight:600; letter-spacing:0.15em; color:#aaa; text-transform:uppercase; margin-bottom:14px; }
+    .hero-title { font-weight:800; color:#fff; font-size:clamp(28px,3.8vw,50px); line-height:1.1; letter-spacing:-0.8px; }
+    .hero-sub { margin-top:16px; color:#90aab0; font-size:14px; line-height:1.65; max-width:560px; }
+
+    /* STAT CARDS */
+    .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:20px; }
+    @media(max-width:900px){ .stat-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:520px){ .stat-grid{ grid-template-columns:1fr; } }
+    .stat-card {
+      background:white; border-radius:18px; padding:28px 24px 30px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.05);
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,0.1); }
+    .stat-label { font-size:10px; font-weight:700; letter-spacing:0.14em; color:#1a9e8f; text-transform:uppercase; margin-bottom:14px; }
+    .stat-big { font-size:clamp(28px,3vw,40px); font-weight:800; color:#1a1a1a; letter-spacing:-1px; line-height:1; margin-bottom:12px; }
+    .stat-desc { font-size:13px; color:#888; line-height:1.55; }
+
+    /* MAIN GRID */
+    .main-grid { display:grid; grid-template-columns:1fr 360px; gap:20px; margin-top:20px; align-items:start; }
+    @media(max-width:960px){ .main-grid{ grid-template-columns:1fr; } }
+
+    /* REQUESTS SECTION */
+    .sec-label { font-size:10px; font-weight:700; letter-spacing:0.14em; color:#1a9e8f; text-transform:uppercase; margin-bottom:10px; }
+    .sec-title { font-weight:800; color:#1a1a1a; font-size:clamp(26px,2.8vw,36px); letter-spacing:-0.6px; line-height:1.15; }
+    .sec-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:20px; }
+    .feed-btn {
+      flex-shrink:0; padding:12px 20px; background:white; border-radius:14px;
+      font-size:13px; font-weight:600; color:#1a1a1a; text-decoration:none;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08); border:1px solid rgba(0,0,0,0.07);
+      text-align:center; line-height:1.3; transition:box-shadow 0.2s;
+    }
+    .feed-btn:hover { box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+
+    /* Request cards */
+    .req-cards { display:flex; flex-direction:column; gap:16px; }
+    .req-card {
+      background:white; border-radius:18px; padding:24px 28px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.05);
+    }
+    .req-top-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+    .rtag {
+      display:inline-block; border-radius:999px; padding:5px 14px;
+      font-size:12px; font-weight:500; border:1.5px solid;
+    }
+    .rtag-webdev  { background:#e8f4f2; color:#1a7a6e; border-color:#c0e0da; }
+    .rtag-design  { background:#f0eef8; color:#6c3bc0; border-color:#d5ccee; }
+    .rtag-career  { background:#eef4e8; color:#3a7a2a; border-color:#c0daa8; }
+    .rtag-high    { background:#fde8e8; color:#c0392b; border-color:#f5c0bc; }
+    .rtag-medium  { background:#fef3e0; color:#b07000; border-color:#f0d090; }
+    .rtag-low     { background:#e8f4e8; color:#2a7a2a; border-color:#a8d8a8; }
+    .rtag-open    { background:#f0f0f0; color:#555; border-color:#ddd; }
+    .rtag-solved  { background:#e8f4f2; color:#1a7a6e; border-color:#c0e0da; }
+
+    .req-title { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:8px; letter-spacing:-0.2px; line-height:1.4; }
+    .req-desc  { font-size:13px; color:#888; line-height:1.6; margin-bottom:14px; }
+    .req-skill-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+    .skill-tag {
+      display:inline-block; border-radius:999px; padding:5px 14px;
+      font-size:12px; font-weight:500; background:#f3efe6; color:#555;
+      border:1.5px solid #e5e0d5;
+    }
+    .req-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .req-author { font-size:14px; font-weight:700; color:#1a1a1a; }
+    .req-meta   { font-size:12px; color:#aaa; margin-top:2px; }
+    .open-btn {
+      padding:10px 22px; border-radius:12px; background:white; font-size:13px; font-weight:600;
+      color:#1a1a1a; text-decoration:none; border:1.5px solid rgba(0,0,0,0.12);
+      box-shadow:0 2px 6px rgba(0,0,0,0.07); transition:box-shadow 0.2s;
+    }
+    .open-btn:hover { box-shadow:0 6px 16px rgba(0,0,0,0.13); }
+
+    /* RIGHT SIDEBAR */
+    .sidebar { display:flex; flex-direction:column; gap:16px; }
+
+    /* AI Insights */
+    .side-card {
+      background:white; border-radius:18px; padding:24px 28px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.05);
+    }
+    .side-label { font-size:10px; font-weight:700; letter-spacing:0.14em; color:#1a9e8f; text-transform:uppercase; margin-bottom:10px; }
+    .side-title { font-size:18px; font-weight:800; color:#1a1a1a; letter-spacing:-0.3px; margin-bottom:18px; }
+    .insight-row {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:14px 0; border-bottom:1px solid #f0ede6;
+    }
+    .insight-row:last-child { border-bottom:none; padding-bottom:0; }
+    .insight-key { font-size:13px; color:#888; font-weight:400; flex-shrink:0; max-width:140px; line-height:1.4; }
+    .insight-val { font-size:13px; color:#1a1a1a; font-weight:700; text-align:right; line-height:1.4; }
+
+    /* Notifications */
+    .notif-row {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:16px 0; border-bottom:1px solid #f0ede6;
+    }
+    .notif-row:last-child { border-bottom:none; padding-bottom:0; }
+    .notif-msg  { font-size:13px; font-weight:600; color:#1a1a1a; line-height:1.45; margin-bottom:5px; }
+    .notif-meta { font-size:12px; color:#aaa; }
+    .notif-badge {
+      flex-shrink:0; padding:5px 14px; border-radius:999px; font-size:12px; font-weight:600;
+      white-space:nowrap; margin-top:2px;
+    }
+    .badge-unread { background:#fde8e8; color:#c0392b; border:1.5px solid #f5c0bc; }
+    .badge-read   { background:#f0f0f0; color:#888; border:1.5px solid #ddd; }
+
+    /* FOOTER */
+    .footer {
+      max-width:1200px; margin:32px auto 0; padding:18px 28px 32px;
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:12px; color:#999; flex-wrap:wrap; gap:12px;
+      border-top:1px solid rgba(0,0,0,0.07);
+    }
+    .foot-logo { display:flex; align-items:center; gap:8px; }
+    .foot-icon  { width:24px; height:24px; border-radius:7px; background:#1a9e8f; display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:11px; }
+    .foot-links { display:flex; gap:18px; }
+    .foot-links a { color:#999; text-decoration:none; }
+    .foot-links a:hover { color:#1a1a1a; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo"     >
+        <a href="./index.html">
+        <div class="logo-icon">H</div>
+        <span class="logo-text">HelpHub AI</span>
+      </div>
+      </a>
+      <div class="nav-center">
+        <a href="./Dashboard.html" class="nav-link active">Dashboard</a>
+        <a href="./Explore.html" class="nav-link">Explore</a>
+        <a href="./Create-Request.html" class="nav-link">Create Request</a>
+        <a href="./Message.html" class="nav-link">Messages</a>
+        <a href="./Request.html" class="nav-link">Profile</a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="notif-btn">Notifications</a>
+        <a href="#" class="ai-btn">Open AI Center</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="wrap">
+    <div class="hero-box">
+      <div class="blob1"></div>
+      <div class="blob2"></div>
+      <p class="hero-label">Dashboard</p>
+      <h1 class="hero-title">Welcome back, Ayesha Khan.</h1>
+      <p class="hero-sub">Your command center for requests, AI insights, helper momentum, and live community activity.</p>
+    </div>
+  </div>
+
+  <!-- STAT CARDS -->
+  <div class="wrap" style="margin-top:0;">
+    <div class="stat-grid">
+
+      <div class="stat-card">
+        <p class="stat-label">Trust Score</p>
+        <p class="stat-big">92%</p>
+        <p class="stat-desc">Driven by solved requests and consistent support.</p>
+      </div>
+
+      <div class="stat-card">
+        <p class="stat-label">Helping</p>
+        <p class="stat-big">2</p>
+        <p class="stat-desc">Requests where you are currently listed as a helper.</p>
+      </div>
+
+      <div class="stat-card">
+        <p class="stat-label">Open Requests</p>
+        <p class="stat-big">2</p>
+        <p class="stat-desc">Community requests currently active across the feed.</p>
+      </div>
+
+      <div class="stat-card">
+        <p class="stat-label">AI Pulse</p>
+        <p class="stat-big">1 trends</p>
+        <p class="stat-desc">Trend count detected in the latest request activity.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="wrap" style="padding-bottom: 0;">
+    <div class="main-grid">
+
+      <!-- LEFT: Recent Requests -->
+      <div>
+        <div class="sec-head">
+          <div>
+            <p class="sec-label">Recent Requests</p>
+            <h2 class="sec-title">What the community<br>needs right now</h2>
+          </div>
+          <a href="./Explore.html" class="feed-btn">Go to<br>feed</a>
+        </div>
+
+        <div class="req-cards">
+
+          <!-- Card 1 -->
+          <div class="req-card">
+            <div class="req-top-tags">
+              <span class="rtag rtag-webdev">Web Development</span>
+              <span class="rtag rtag-high">High</span>
+              <span class="rtag rtag-open">Open</span>
+            </div>
+            <p class="req-title">Need help making my portfolio responsive before demo day</p>
+            <p class="req-desc">My HTML/CSS portfolio breaks on tablets and I need layout guidance before tomorrow evening.</p>
+            <div class="req-skill-tags">
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">Responsive</span>
+              <span class="skill-tag">Portfolio</span>
+            </div>
+            <div class="req-footer">
+              <div>
+                <p class="req-author">Sara Noor</p>
+                <p class="req-meta">Karachi • 1 helper interested</p>
+              </div>
+              <a href="#" class="open-btn">Open details</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="req-card">
+            <div class="req-top-tags">
+              <span class="rtag rtag-design">Design</span>
+              <span class="rtag rtag-medium">Medium</span>
+              <span class="rtag rtag-open">Open</span>
+            </div>
+            <p class="req-title">Looking for Figma feedback on a volunteer event poster</p>
+            <p class="req-desc">I have a draft poster for a campus community event and want sharper hierarchy, spacing, and CTA copy.</p>
+            <div class="req-skill-tags">
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Poster</span>
+              <span class="skill-tag">Design Review</span>
+            </div>
+            <div class="req-footer">
+              <div>
+                <p class="req-author">Ayesha Khan</p>
+                <p class="req-meta">Lahore • 1 helper interested</p>
+              </div>
+              <a href="#" class="open-btn">Open details</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="req-card">
+            <div class="req-top-tags">
+              <span class="rtag rtag-career">Career</span>
+              <span class="rtag rtag-low">Low</span>
+              <span class="rtag rtag-solved">Solved</span>
+            </div>
+            <p class="req-title">Need mock interview support for internship applications</p>
+            <p class="req-desc">Applying to frontend internships and need someone to practice behavioral and technical interview questions with me.</p>
+            <div class="req-skill-tags">
+              <span class="skill-tag">Interview Prep</span>
+              <span class="skill-tag">Career</span>
+              <span class="skill-tag">Frontend</span>
+            </div>
+            <div class="req-footer">
+              <div>
+                <p class="req-author">Sara Noor</p>
+                <p class="req-meta">Remote • 2 helpers interested</p>
+              </div>
+              <a href="#" class="open-btn">Open details</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Sidebar -->
+      <div class="sidebar">
+
+        <!-- AI Insights -->
+        <div class="side-card">
+          <p class="side-label">AI Insights</p>
+          <h3 class="side-title">Suggested actions for you</h3>
+          <div>
+            <div class="insight-row">
+              <span class="insight-key">Most requested category</span>
+              <span class="insight-val">Web Development</span>
+            </div>
+            <div class="insight-row">
+              <span class="insight-key">Your strongest trust driver</span>
+              <span class="insight-val">Design Ally</span>
+            </div>
+            <div class="insight-row">
+              <span class="insight-key">AI says you can mentor in</span>
+              <span class="insight-val">HTML/CSS, UI/UX, Career Guidance, Figma</span>
+            </div>
+            <div class="insight-row">
+              <span class="insight-key">Your active requests</span>
+              <span class="insight-val">1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="side-card">
+          <p class="side-label">Notifications</p>
+          <h3 class="side-title">Latest updates</h3>
+          <div>
+
+            <div class="notif-row">
+              <div>
+                <p class="notif-msg">New helper matched to your responsive portfolio request</p>
+                <p class="notif-meta">Match • 12 min ago</p>
+              </div>
+              <span class="notif-badge badge-unread">Unread</span>
+            </div>
+
+            <div class="notif-row">
+              <div>
+                <p class="notif-msg">Your trust score increased after a solved request</p>
+                <p class="notif-meta">Reputation • 1 hr ago</p>
+              </div>
+              <span class="notif-badge badge-unread">Unread</span>
+            </div>
+
+            <div class="notif-row">
+              <div>
+                <p class="notif-msg">AI Center detected rising demand for interview prep</p>
+                <p class="notif-meta">Insight • Today</p>
+              </div>
+              <span class="notif-badge badge-read">Read</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="foot-logo">
+      <div class="foot-icon">H</div>
+      <span>HelpHub AI</span>
+    </div>
+    <span>© 2026 HelpHub AI. All rights reserved.</span>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HelpHub AI — Ayesha Khan | Profile</title>
+  <!-- Tailwind CSS v3 + Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom config to match exact color palette & font overrides -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sora': ['Sora', 'sans-serif'],
+            'dm': ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            'brand-teal': '#2a9d8f',
+            'brand-teal-dark': '#1e7f72',
+            'soft-ivory': '#edeae2',
+            'card-border': '#e5dfd5',
+            'deep-charcoal': '#1e2330',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(16px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* subtle background grain / extra polish */
+    body {
+      background: #edeae2;
+    }
+    .page-bg {
+      background: radial-gradient(ellipse 70% 45% at -5% 5%, rgba(168,230,207,0.4) 0%, transparent 55%),
+                  radial-gradient(ellipse 55% 40% at 105% 95%, rgba(255,210,160,0.35) 0%, transparent 55%),
+                  #edeae2;
+    }
+    input, textarea {
+      transition: all 0.2s ease;
+    }
+    input:focus, textarea:focus {
+      border-color: #2a9d8f !important;
+      box-shadow: 0 0 0 3px rgba(42,157,143,0.12);
+      outline: none;
+    }
+    .save-btn {
+      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .save-btn:hover {
+      background: #1e7f72;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px -5px rgba(42,157,143,0.3);
+    }
+    .save-btn:active {
+      transform: translateY(1px);
+    }
+    /* custom card shadow */
+    .card-soft {
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0,0,0,0.02);
+    }
+  </style>
+</head>
+<body class="font-dm page-bg antialiased">
+
+  <!-- ========== NAVIGATION (sticky, glassmorphic) ========== -->
+  <nav class="sticky top-0 z-50 bg-[#edeae2]/80 backdrop-blur-md border-b border-[#ddd6cb]">
+    <div class="max-w-5xl mx-auto px-6 md:px-8 py-3.5 flex items-center justify-between">
+      <!-- Logo + Brand -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-brand-teal flex items-center justify-center shadow-sm"  >
+          <a href="./index.html">
+          <span class="font-sora font-extrabold text-white text-base tracking-tight">H</span>
+        </div>
+        <span class="font-sora font-bold text-[#1c212e] text-base tracking-tight">HelpHub AI</span>
+      </div>
+      </a>
+      <!-- Nav Links -->
+      <div class="flex items-center gap-1.5">
+        <a href="Dashboard.html" class="font-sora text-[13px] font-medium text-[#5b657c] px-3 py-1.5 rounded-full hover:bg-white/50 hover:text-[#1f2937] transition-all duration-200">Dashboard</a>
+        <a href="#" class="font-sora text-[13px] font-medium text-[#5b657c] px-3 py-1.5 rounded-full hover:bg-white/50 hover:text-[#1f2937] transition-all duration-200">Onboarding</a>
+        <a href="./Profile.html" class="font-sora text-[13px] font-semibold px-3 py-1.5 rounded-full border-2 transition-all duration-200" style="border-color:#2a9d8f; color:#2a9d8f; background:rgba(42,157,143,0.06);">Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-6 md:px-8 py-8 md:py-10">
+    
+    <!-- ========== HERO SECTION (profile header – exactly like design) ========== -->
+    <div class="rounded-3xl px-8 md:px-12 py-10 mb-8 relative overflow-hidden opacity-0 animate-fade-up" style="background: #1e2330;">
+      <!-- decorative blobs -->
+      <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20" style="background: radial-gradient(circle, #2a9d8f 0%, #2a9d8f 40%, transparent 70%); transform: translate(30%, -30%);"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10" style="background: radial-gradient(ellipse, #ffe6c7, transparent 70%);"></div>
+      <div class="relative z-2">
+        <div class="mb-3">
+          <span class="font-sora text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-brand-teal/20 text-brand-teal">PROFILE</span>
+        </div>
+        <h1 class="font-sora font-extrabold text-white text-[44px] md:text-[52px] leading-[1.2] tracking-tight mb-2">Ayesha Khan</h1>
+        <div class="flex items-center gap-2 text-[#b9c2d4] text-[15px] font-medium">
+          <span>Both</span>
+          <span class="w-1 h-1 rounded-full bg-[#5f6c86]"></span>
+          <span>Karachi</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== TWO COLUMN GRID: Public Profile | Edit Profile ========== -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
+      
+      <!-- LEFT CARD: PUBLIC PROFILE (Skills, reputation, badges) -->
+      <div class="bg-white rounded-2xl p-7 md:p-8 border border-card-border card-soft opacity-0 animate-fade-up" style="animation-delay: 0.05s;">
+        <!-- Header with icon -->
+        <div class="flex items-center gap-2 mb-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 13c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z" fill="#2a9d8f"/>
+          </svg>
+          <p class="font-sora text-[10px] font-bold tracking-widest uppercase text-brand-teal">PUBLIC PROFILE</p>
+        </div>
+        <h2 class="font-sora font-bold text-[#1a202c] text-[28px] mb-6 tracking-tight">Skills and reputation</h2>
+        
+        <!-- Trust score row (progress + percentage) -->
+        <div class="flex items-center justify-between py-4 border-b border-[#efeae2]">
+          <span class="text-[#4b5563] text-[15px] font-medium">Trust score</span>
+          <div class="flex items-center gap-2">
+            <div class="w-20 h-2 bg-[#e2e0da] rounded-full overflow-hidden">
+              <div class="h-full rounded-full" style="width: 100%; background: #2a9d8f;"></div>
+            </div>
+            <span class="font-sora font-extrabold text-[#1a202c] text-[15px]">100%</span>
+          </div>
+        </div>
+        
+        <!-- Contributions -->
+        <div class="flex items-center justify-between py-4 border-b border-[#efeae2] mb-5">
+          <span class="text-[#4b5563] text-[15px] font-medium">Contributions</span>
+          <span class="font-sora font-extrabold text-[#1a202c] text-[15px] bg-[#f3f0ea] px-3 py-0.5 rounded-full">35</span>
+        </div>
+        
+        <!-- Skills chips -->
+        <div class="mb-6">
+          <p class="font-sora font-bold text-[#1a202c] text-[14px] mb-3 flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#2a9d8f"/>
+            </svg>
+            Skills
+          </p>
+          <div class="flex flex-wrap gap-2.5" id="public-skills-container">
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">Figma</span>
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">UI/UX</span>
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">HTML/CSS</span>
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">Career Guidance</span>
+          </div>
+        </div>
+        
+        <!-- Badges (exactly: Design Ally, Fast Responder, Top Mentor) -->
+        <div>
+          <p class="font-sora font-bold text-[#1a202c] text-[14px] mb-3 flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#2a9d8f"/>
+            </svg>
+            Badges
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">Design Ally</span>
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">Fast Responder</span>
+            <span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">Top Mentor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT CARD: EDIT PROFILE (Update your identity) -->
+      <div class="bg-white rounded-2xl p-7 md:p-8 border border-card-border card-soft opacity-0 animate-fade-up" style="animation-delay: 0.12s;">
+        <div class="flex items-center gap-2 mb-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#2a9d8f"/>
+          </svg>
+          <p class="font-sora text-[10px] font-bold tracking-widest uppercase text-brand-teal">EDIT PROFILE</p>
+        </div>
+        <h2 class="font-sora font-bold text-[#1a202c] text-[28px] leading-tight mb-6">Update your<br/>identity</h2>
+        
+        <!-- Name + Location double column -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          <div>
+            <label class="font-sora text-[11px] font-semibold text-[#5b6e8c] block mb-1.5 uppercase tracking-wide">Name</label>
+            <input type="text" id="edit-name" value="Ayesha Khan" 
+                   class="w-full border border-[#ddd6cb] rounded-xl px-4 py-2.5 text-[14px] text-[#1f2a44] bg-white focus:ring-0 transition"/>
+          </div>
+          <div>
+            <label class="font-sora text-[11px] font-semibold text-[#5b6e8c] block mb-1.5 uppercase tracking-wide">Location</label>
+            <input type="text" id="edit-location" value="Karachi" 
+                   class="w-full border border-[#ddd6cb] rounded-xl px-4 py-2.5 text-[14px] text-[#1f2a44] bg-white"/>
+          </div>
+        </div>
+        
+        <!-- Skills field (comma-separated) -->
+        <div class="mb-5">
+          <label class="font-sora text-[11px] font-semibold text-[#5b6e8c] block mb-1.5 uppercase tracking-wide">Skills</label>
+          <input type="text" id="edit-skills" value="Figma, UI/UX, HTML/CSS, Career Guidance" 
+                 class="w-full border border-[#ddd6cb] rounded-xl px-4 py-2.5 text-[14px] text-[#1f2a44] bg-white"/>
+        </div>
+        
+        <!-- Interests field (exactly from design) -->
+        <div class="mb-7">
+          <label class="font-sora text-[11px] font-semibold text-[#5b6e8c] block mb-1.5 uppercase tracking-wide">Interests</label>
+          <input type="text" id="edit-interests" value="Hackathons, UI/UX, Community Building" 
+                 class="w-full border border-[#ddd6cb] rounded-xl px-4 py-2.5 text-[14px] text-[#1f2a44] bg-white"/>
+        </div>
+        
+        <!-- Save button with interactive feedback -->
+        <button id="saveProfileBtn" class="save-btn w-full font-sora font-bold text-white text-[15px] py-3.5 rounded-xl cursor-pointer flex items-center justify-center gap-2 shadow-md transition-all bg-brand-teal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="white"/>
+          </svg>
+          Save profile
+        </button>
+        <p class="text-[11px] text-center text-[#9b8e7c] mt-4 font-sora">Your changes will be visible on your public profile</p>
+      </div>
+    </div>
+
+    <!-- micro interaction footer badge (optional but adds charm) -->
+    <div class="mt-10 text-center opacity-0 animate-fade-up" style="animation-delay: 0.2s;">
+      <div class="inline-flex flex-wrap items-center justify-center gap-2.5 bg-white/70 backdrop-blur-sm rounded-full px-5 py-2 border border-[#ddd2c4] shadow-sm">
+        <span class="text-[#4b5563] text-[12px] font-sora font-medium">✨ Active mentor</span>
+        <span class="w-1 h-1 rounded-full bg-[#cbbfae]"></span>
+        <span class="text-[#4b5563] text-[12px] font-sora font-medium">🏅 35 contributions</span>
+        <span class="w-1 h-1 rounded-full bg-[#cbbfae]"></span>
+        <span class="text-brand-teal text-[12px] font-sora font-semibold">💬 Fast responder</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-[#dcd3c8] mt-12 py-6 text-center text-[#8b7f6e] text-[12px] font-sora">
+    <div class="max-w-5xl mx-auto px-6">HelpHub AI — empowering mentors & learners</div>
+  </footer>
+
+  <!-- interactive JS: update public profile in real-time (matching the image's editable nature) -->
+  <script>
+    (function() {
+      const saveBtn = document.getElementById('saveProfileBtn');
+      const nameInput = document.getElementById('edit-name');
+      const locationInput = document.getElementById('edit-location');
+      const skillsInput = document.getElementById('edit-skills');
+      const interestsInput = document.getElementById('edit-interests');
+      
+      // DOM elements that will update dynamically
+      const heroName = document.querySelector('.rounded-3xl h1'); // main hero name
+      const heroLocationSpan = document.querySelector('.rounded-3xl .flex.items-center.gap-2 span:last-child');
+      const publicSkillsContainer = document.getElementById('public-skills-container');
+      
+      // Helper to escape HTML
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+          if (m === '&') return '&amp;';
+          if (m === '<') return '&lt;';
+          if (m === '>') return '&gt;';
+          return m;
+        });
+      }
+      
+      // function to update skills chips based on input (comma-separated)
+      function updateSkillsChips(skillsString) {
+        if (!publicSkillsContainer) return;
+        let skillsArray = skillsString.split(',').map(s => s.trim()).filter(s => s.length > 0);
+        if (skillsArray.length === 0) skillsArray = ['Figma', 'UI/UX', 'HTML/CSS', 'Career Guidance']; // fallback
+        const chipsHtml = skillsArray.map(skill => 
+          `<span class="font-sora text-[12px] font-semibold px-3.5 py-1.5 rounded-full bg-[#eff7f5] border border-[#cde3df] text-brand-teal">${escapeHtml(skill)}</span>`
+        ).join('');
+        publicSkillsContainer.innerHTML = chipsHtml;
+      }
+      
+      // Save profile logic: updates name, location, skills, and also shows success feedback
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Get fresh values
+          const newName = nameInput ? nameInput.value.trim() : 'Ayesha Khan';
+          const newLocation = locationInput ? locationInput.value.trim() : 'Karachi';
+          const newSkillsRaw = skillsInput ? skillsInput.value.trim() : 'Figma, UI/UX, HTML/CSS, Career Guidance';
+          const newInterests = interestsInput ? interestsInput.value.trim() : '';
+          
+          // 1) Update hero section
+          if (heroName) heroName.innerText = newName || 'Ayesha Khan';
+          if (heroLocationSpan) heroLocationSpan.innerText = newLocation || 'Karachi';
+          
+          // 2) Update skills chips in public profile
+          updateSkillsChips(newSkillsRaw);
+          
+          // 3) (Optional but nice) we can update interests if we wanted to add an interests section on public side.
+          // The design doesn't show interests on public, but we could reflect if needed – just for polish,
+          // we'll show a toast-like effect.
+          
+          // Provide micro feedback: change button text and revert after 1.4s
+          const originalBtnHTML = saveBtn.innerHTML;
+          saveBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/></svg> Saved!`;
+          saveBtn.style.background = "#1e7f72";
+          setTimeout(() => {
+            saveBtn.innerHTML = originalBtnHTML;
+            saveBtn.style.background = "#2a9d8f";
+          }, 1500);
+          
+          // also show an optional subtle console-free success message (non-intrusive)
+          const tempMsg = document.createElement('div');
+          tempMsg.innerText = '✓ Profile updated successfully';
+          tempMsg.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-[#1e2330] text-white text-xs font-sora font-medium px-4 py-2 rounded-full shadow-lg z-50 transition-all duration-300';
+          document.body.appendChild(tempMsg);
+          setTimeout(() => {
+            tempMsg.style.opacity = '0';
+            setTimeout(() => tempMsg.remove(), 300);
+          }, 2000);
+        });
+      }
+      
+      // Additional dynamic: if skillsInput is empty on blur? ensure consistency; but initial load also ensures chips are correct.
+      // Also for demonstration, on page load we sync any default chips (already matching).
+      if (skillsInput && publicSkillsContainer) {
+        // set initial chips based on default value
+        updateSkillsChips(skillsInput.value);
+      }
+      
+      // Bonus: real-time preview when typing? but we keep it manual via save button as per typical edit profile UX.
+      // However to match exact user expectation: the left side updates only after clicking "Save profile".
+      // All good.
+    })();
+  </script>
+</body>
+</html>

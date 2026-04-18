@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HelpHub AI — Messages</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    .sora { font-family: 'Sora', sans-serif; }
+
+    .page-bg {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 55% 45% at 0% 0%, rgba(168,230,207,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255,210,160,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 100% 0%, rgba(200,240,220,0.2) 0%, transparent 50%),
+        #edeae2;
+    }
+
+    select, textarea {
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    select:focus, textarea:focus {
+      outline: none;
+      border-color: #2a9d8f;
+      box-shadow: 0 0 0 3px rgba(42,157,143,0.12);
+    }
+
+    .send-btn {
+      background: #2a9d8f;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    .send-btn:hover  { background: #239187; }
+    .send-btn:active { transform: scale(0.98); }
+
+    /* Custom select arrow */
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: #fff;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.4s ease both; }
+    .d1 { animation-delay: 0.05s; }
+    .d2 { animation-delay: 0.12s; }
+    .d3 { animation-delay: 0.18s; }
+  </style>
+</head>
+<body class="page-bg">
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav class="sticky top-0 z-50" style="background:#edeae2;">
+    <div class="max-w-5xl mx-auto px-6" style="height:56px;display:flex;align-items:center;justify-content:space-between;">
+      <!-- Brand -->
+      <div style="display:flex;align-items:center;gap:10px;"  >
+        <a href="./index.html">
+        <div style="width:32px;height:32px;background:#2a9d8f;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+          <span class="sora" style="font-weight:800;color:#fff;font-size:14px;">H</span>
+        </div>
+        <span class="sora" style="font-weight:700;color:#1a1f2e;font-size:14px;">HelpHub AI</span>
+        </a>
+      </div>
+      <!-- Links -->
+      <div style="display:flex;align-items:center;gap:4px;">
+        <a href="./Dashboard.html" class="sora" style="font-size:13px;font-weight:500;color:#6b7280;padding:6px 14px;border-radius:999px;text-decoration:none;">Dashboard</a>
+        <a href="./Explore.html" class="sora" style="font-size:13px;font-weight:500;color:#6b7280;padding:6px 14px;border-radius:999px;text-decoration:none;">Explore</a>
+        <a href="./Message.html" class="sora" style="font-size:13px;font-weight:600;color:#2a9d8f;padding:6px 16px;border-radius:999px;border:1.5px solid #2a9d8f;text-decoration:none;background:transparent;">Messages</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl mx-auto px-6 py-8">
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <div class="rounded-2xl px-10 py-10 mb-8 relative overflow-hidden fade-up" style="background:#1e2330;">
+      <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20" style="background:radial-gradient(circle,#2a9d8f 0%,transparent 70%);transform:translate(30%,-30%);"></div>
+      <p class="sora text-[11px] font-semibold tracking-widest uppercase mb-3" style="color:#2a9d8f;">Interaction / Messaging</p>
+      <h1 class="sora font-extrabold text-white leading-tight mb-4" style="font-size:clamp(26px,4vw,40px);max-width:640px;">Keep support moving through direct communication.</h1>
+      <p class="text-[#9ca3af] text-[14px]">Basic messaging gives helpers and requesters a clear follow-up path once a match happens.</p>
+    </div>
+
+    <!-- ═══════════ BODY ═══════════ -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+
+      <!-- LEFT: Conversation Stream -->
+      <div class="bg-white rounded-2xl p-8 border border-[#e8e3da] fade-up d1">
+        <p class="sora text-[10px] font-bold tracking-widest uppercase mb-2" style="color:#2a9d8f;">Conversation Stream</p>
+        <h2 class="sora font-bold text-[#1a1f2e] text-[26px] mb-6">Recent messages</h2>
+
+        <!-- Message 1 -->
+        <div class="rounded-2xl border border-[#ede9e2] p-5 mb-4">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <p class="sora font-semibold text-[#1a1f2e] text-[14px] mb-2">Ayesha Khan → Sara Noor</p>
+              <p class="text-[#6b7280] text-[13px] leading-relaxed">I checked your portfolio request. Share the breakpoint screenshots and I can suggest fixes.</p>
+            </div>
+            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-center" style="background:#e8f1f0;">
+              <span class="sora font-semibold text-[#2a9d8f] text-[12px] leading-tight">09:45<br/>AM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message 2 -->
+        <div class="rounded-2xl border border-[#ede9e2] p-5">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <p class="sora font-semibold text-[#1a1f2e] text-[14px] mb-2">Hassan Ali → Ayesha Khan</p>
+              <p class="text-[#6b7280] text-[13px] leading-relaxed">Your event poster concept is solid. I would tighten the CTA and reduce the background texture.</p>
+            </div>
+            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-center" style="background:#e8f1f0;">
+              <span class="sora font-semibold text-[#2a9d8f] text-[12px] leading-tight">11:10<br/>AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Send Message -->
+      <div class="bg-white rounded-2xl p-8 border border-[#e8e3da] fade-up d2">
+        <p class="sora text-[10px] font-bold tracking-widest uppercase mb-2" style="color:#2a9d8f;">Send Message</p>
+        <h2 class="sora font-bold text-[#1a1f2e] text-[26px] leading-tight mb-7">Start a<br/>conversation</h2>
+
+        <!-- To -->
+        <div class="mb-5">
+          <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">To</label>
+          <select class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] cursor-pointer">
+            <option>Ayesha Khan</option>
+            <option>Sara Noor</option>
+            <option>Hassan Ali</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="mb-6">
+          <label class="sora text-[13px] font-medium text-[#1a1f2e] block mb-2">Message</label>
+          <textarea rows="6" placeholder="Share support details, ask for files, or suggest next steps."
+            class="w-full border border-[#e0dbd2] rounded-xl px-4 py-3 text-[13px] text-[#1a1f2e] placeholder-[#b0aaa0] resize-none leading-relaxed"></textarea>
+        </div>
+
+        <!-- Send button -->
+        <button class="send-btn w-full sora font-bold text-white text-[14px] py-4 rounded-2xl cursor-pointer">
+          Send
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
